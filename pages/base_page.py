@@ -20,10 +20,10 @@ class BasePage:
     
     def is_visible(self, locator):
         try:
-            self.wait.until(EC.visibility_of_element_located(locator))
-            return True
+            element = self.wait.until(EC.visibility_of_element_located(locator))
+            return element
         except:
-            return False
+            return None
     
     def hover_over_scroll_into_wiew(self, locator):
         element = self.wait.until(EC.visibility_of_element_located(locator))
@@ -37,6 +37,18 @@ class BasePage:
 
     def select_from_dropdown(self, locator, value):
         self.wait.until(EC.visibility_of_element_located(locator)).find_element(By.XPATH , f'.//input[@value="{value}"]').click
+
+    def navigate_to_header_menu_option(self , locator):
+        element = self.is_visible(locator)
+        if not element:
+            raise Exception(f"Elmento con locator '{locator}' no esta visible")
+        
+        style = element.get_attribute("style")
+        if "color: orange;" not in style:
+            self.click(locator)
+            updatedElement = self.is_visible(locator)
+            updatedStyle = updatedElement.get_attribute("style")
+            assert "color: orange;" in updatedStyle,  f"You are not in the expected page"
 
         
     def visit(self, url):

@@ -7,6 +7,7 @@ from pages.login_page import LoginPage
 from pages.logged_page import LoggedInPage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+from locators.home_page_locators import HomePageLocators
 
 @pytest.fixture #loads config file with test data
 def config():
@@ -21,4 +22,5 @@ def home_page(driver, config):
     return homePage
 
 def test_singup(driver,config, home_page):
-    home_page.verify_home_page
+    home_page.navigate_to_header_menu_option(HomePageLocators.homePageTitle)
+    home_page.verify_home_page()
