@@ -8,3 +8,5 @@ class LoggedInPage(BasePage):
 
     def get_succes_message(self):
         return self.get_text(LoggedLocators.succesMessage)
+        
+    

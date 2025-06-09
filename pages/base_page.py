@@ -1,5 +1,8 @@
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.by import By
 
 class BasePage:
     def __init__(self, driver, timeout =  10):
@@ -21,6 +24,20 @@ class BasePage:
             return True
         except:
             return False
+    
+    def hover_over_scroll_into_wiew(self, locator):
+        element = self.wait.until(EC.visibility_of_element_located(locator))
+        self.driver.execute_script("""
+            const rect = arguments[0].getBoundingClientRect();
+            if (rect.top < 0 || rect.bottom > window.innerHeight) {
+            arguments[0].scrollIntoView({ behavior: 'auto', block: 'center' });
+            }
+        """, element)
+        ActionChains(self.driver).move_to_element(element).perform()
+
+    def select_from_dropdown(self, locator, value):
+        self.wait.until(EC.visibility_of_element_located(locator)).find_element(By.XPATH , f'.//input[@value="{value}"]').click
+
         
     def visit(self, url):
         self.driver.get(url)
