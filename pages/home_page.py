@@ -7,12 +7,12 @@ class HomePage(BasePage):
         super().__init__(driver, timeout)
 
     def verify_home_page(self):
-        expectedText = self.get_text(HomePageLocators.homePageText)
-        resulText = """AutomationExercise
+        resultText = self.get_text(HomePageLocators.homePageText)
+        expectedText = """AutomationExercise
 Full-Fledged practice website for Automation Engineers
 All QA engineers can use this website for automation practice and API testing either they are at beginner or advance level. This is for everybody to help them brush up their automation skills.
 Test Cases APIs list for practice"""
     
-        assert expectedText == resulText, f"{expectedText}"
+        assert resultText == expectedText, f"Text is different from expected"
         image = self.is_visible(HomePageLocators.homePageImage) 
-        assert image , f"La imagen de la Home Page no esta visible{image}"
+        assert image , f"La imagen de la Home Page no esta visible"

@@ -22,5 +22,5 @@ def home_page(driver, config):
     return homePage
 
 def test_singup(driver,config, home_page):
-    home_page.navigate_to_header_menu_option(HomePageLocators.homePageTitle)
+    home_page.navigate_to_header_menu_option(HomePageLocators.home_page_header_button)
     home_page.verify_home_page()
