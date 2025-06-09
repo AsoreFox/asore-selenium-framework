@@ -1,7 +1,7 @@
 {
   "base_url": "https://automationexercise.com/",
-  "namne": "testUser",
-  "email": "testUser@Minervainc.com",
+  "name": "TestUser",
+  "email": "TestUser@Minervainc.com",
   "password" : "Password12356"
   
 

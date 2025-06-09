@@ -13,5 +13,3 @@ def driver(request):
     driver = factory.create_driver()
     yield driver
     driver.quit()
-    
-

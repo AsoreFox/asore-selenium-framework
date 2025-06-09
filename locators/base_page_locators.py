@@ -1,8 +1,8 @@
 from selenium.webdriver.common.by import By
 
 class BasePageLocators:
-    basePageLogo = (By.CLASS_NAME, "logo pull-left")
-    homePageTitle = (By.XPATH, "//*[@href= '/' and contains(text(),'Home')]")
-    productsPageTitle = (By.XPATH, "//*[@href= '/products' ]")
-    cartPageTitle = (By.XPATH, "//*[@href= '/view_cart']")
-    loginSignupPageTitle = (By.XPATH, "//*[@href= '/login']")
+    base_page_logo = (By.CLASS_NAME, "logo pull-left")
+    home_page_header_button = (By.XPATH, "//*[@href= '/' and contains(text(),'Home')]")
+    products_page_header_button = (By.XPATH, "//*[@href= '/products' ]")
+    cart_page_header_button = (By.XPATH, "//*[@href= '/view_cart']")
+    login_singup_page_header_button = (By.XPATH, "//*[@href= '/login']")
