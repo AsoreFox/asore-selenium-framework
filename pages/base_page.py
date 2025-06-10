@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 class BasePage:
     def __init__(self, driver, timeout =  10):
         self.driver =  driver 
-        self.wait = WebDriverWait(driver, timeout)
+        self.wait = WebDriverWait(self.driver, timeout)
     
     def click(self, locator):
         self.wait.until(EC.element_to_be_clickable(locator)).click()
@@ -38,10 +38,11 @@ class BasePage:
     def select_from_dropdown(self, locator, value):
         self.wait.until(EC.visibility_of_element_located(locator)).find_element(By.XPATH , f'.//input[@value="{value}"]').click
 
-    def navigate_to_header_menu_option(self , locator):
+    def navigate_to_header_menu_option(self , option):
+        locator = (By.XPATH, f"//a[contains(text(),'{option}')]")
         element = self.is_visible(locator)
         if not element:
-            raise Exception(f"Elmento con locator '{locator}' no esta visible")
+            raise Exception(f"Elmento con xpath:  '{locator}' no esta visible")
         
         style = element.get_attribute("style")
         if "color: orange;" not in style:

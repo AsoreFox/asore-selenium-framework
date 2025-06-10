@@ -1,0 +1,19 @@
+{
+  "name": "TestUser",
+  "email": "TestUser@Minervainc.com",
+  "gender" : "Mr.",
+  "password": "P@ssw0rd",
+  "date_of_birth": ["15", "May", "1994"],
+  "first_name": "Test",
+  "last_name": "User",
+  "company": "Minerva Inc",
+  "address": "123 Main St",
+  "address_2": "312 Second St",
+  "country": "United States",
+  "state": "Buenos Aires",
+  "city": "La Plata",
+  "zipcode": "1900",
+  "mobile_number": "123456789"
+  
+
+}
