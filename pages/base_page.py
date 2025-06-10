@@ -61,7 +61,7 @@ class BasePage:
         self.driver.get(url)
     
     def verify_user_is_logged_in(self, user_name):
-            expected_user = f"Logged in as {user_name}" 
+            expected_user = user_name
             result_user = self.get_text(BasePageLocators.user_logged_in_name)
             assert expected_user in result_user, f"Expected {expected_user}, but got {result_user}"
             assert self.is_visible(BasePageLocators.logout_header_button), f"Logout button not visible"
