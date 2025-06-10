@@ -6,3 +6,6 @@ class BasePageLocators:
     products_page_header_button = (By.XPATH, "//*[@href= '/products' ]")
     cart_page_header_button = (By.XPATH, "//*[@href= '/view_cart']")
     login_singup_page_header_button = (By.XPATH, "//*[@href= '/login']")
+    logout_header_button = (By.XPATH, "//*[@href= '/logout']")
+    delete_account_header_button = (By.XPATH, "//*[@href= '/delete_account']")
+    user_logged_in_name = (By.XPATH, "//*[normalize-space(text()) = 'Logged in as']")

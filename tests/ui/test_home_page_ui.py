@@ -5,6 +5,8 @@ from pages.home_page import HomePage
 from pages.login_page import LoginPage
 from pages.login_page import LoginPage
 from pages.signup_page import SignupPage
+from pages.account_created_page import AccountCreatedPage
+from pages.delete_account import DeleteAccountPage
 from models.user import NewUser
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -38,3 +40,11 @@ def test_singup(driver, config, home_page, user):
     signup_page = SignupPage(driver)
     signup_page.verify_signup_page(user)
     signup_page.fill_formulary(user)
+    account_created_page = AccountCreatedPage(driver)
+    account_created_page.verify_account_created_page()
+    home_page.verify_user_is_logged_in(user.name)
+    home_page.delete_user()
+    deleted_account_page = DeleteAccountPage(driver)
+    deleted_account_page.verify_account_is_deleted()
+
+

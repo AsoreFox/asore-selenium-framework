@@ -3,6 +3,8 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+from locators.base_page_locators import BasePageLocators
 
 class BasePage:
     def __init__(self, driver, timeout =  10):
@@ -36,7 +38,10 @@ class BasePage:
         ActionChains(self.driver).move_to_element(element).perform()
 
     def select_from_dropdown(self, locator, value):
-        self.wait.until(EC.visibility_of_element_located(locator)).find_element(By.XPATH , f'.//input[@value="{value}"]').click
+        dropdwon = self.is_visible(locator)
+        dropdwon.click()
+        select = Select(dropdwon)
+        select.select_by_value(value)
 
     def navigate_to_header_menu_option(self , option):
         locator = (By.XPATH, f"//a[contains(text(),'{option}')]")
@@ -54,3 +59,15 @@ class BasePage:
         
     def visit(self, url):
         self.driver.get(url)
+    
+    def verify_user_is_logged_in(self, user_name):
+            expected_user = f"Logged in as {user_name}" 
+            result_user = self.get_text(BasePageLocators.user_logged_in_name)
+            assert expected_user in result_user, f"Expected {expected_user}, but got {result_user}"
+            assert self.is_visible(BasePageLocators.logout_header_button), f"Logout button not visible"
+            assert self.is_visible(BasePageLocators.delete_account_header_button), f"Delete account button not visible"
+        
+    def delete_user(self):
+        self.click(BasePageLocators.delete_account_header_button)
+    def log_out(self):
+        self.click(BasePageLocators.logout_header_button)

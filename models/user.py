@@ -6,7 +6,11 @@ class NewUser:
     email: str
     gender: str
     password: str
-    date_of_birth: list
+    days: str
+    months : str
+    years : str
+    newsletter : bool
+    special_offers : bool
     first_name: str
     last_name: str
     company: str
