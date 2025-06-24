@@ -4,6 +4,7 @@ import os
 from apis.login import LoginApi
 from models.user import NewUser
 from apis.create_account import CreateAccountApi
+from apis.delete_user_account import DeleteUserAccountApi
 
 BASE_URL = "https://your-api-url.com"
 
@@ -19,10 +20,10 @@ def user():
     
 @pytest.fixture
 def api():
-    return CreateAccountApi()
+    return CreateAccountApi() 
 
 def test_create_account(api, user):
     user = NewUser(**{k: user[k] for k in NewUser.__annotations__}) #instancia el usuario desde el json
     api.create_account(user)
-
+    DeleteUserAccountApi().delete_account(user)  # Clean up by deleting the account after creation
     

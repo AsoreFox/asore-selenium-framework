@@ -28,4 +28,4 @@ class BaseApi:
     def delete_method(self, api, data =  None, headers =  None, timeout = 10):
         response = requests.delete(api, json = data, headers = headers, timeout = timeout)
         response.raise_for_status()
-        return response.json()
+        return response
