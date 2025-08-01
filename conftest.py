@@ -1,5 +1,7 @@
 import pytest
 from driver.driver_factory import DriverFactory
+from app.app_manager import App
+from app.api_manager import ApiHandler
 
 def pytest_addoption(parser):
     parser.addoption("--headless", action = "store_true", default = False)
@@ -13,3 +15,14 @@ def driver(request):
     driver = factory.create_driver()
     yield driver
     driver.quit()
+
+@pytest.fixture
+def app(driver, config):
+    app = App(driver, config)
+    app.start()
+    return app
+
+@pytest.fixture
+def api_handler():
+    api_handler = ApiHandler()
+    return api_handler

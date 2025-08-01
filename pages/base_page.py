@@ -39,7 +39,6 @@ class BasePage:
 
     def select_from_dropdown(self, locator, value):
         dropdwon = self.is_visible(locator)
-        dropdwon.click()
         select = Select(dropdwon)
         select.select_by_value(value)
 

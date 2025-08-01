@@ -17,5 +17,5 @@ class LoginPage(BasePage):
         self.click(LoginLocators.signup_button)
     
     def get_error_message(self):
-        return self.get_text(LoginLocators.errorMessage)
+        return self.get_text(LoginLocators.errorMessage)  #Borrar, ya se armo una funcion en base_page.py para esto 
     

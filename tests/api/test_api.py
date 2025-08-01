@@ -22,8 +22,8 @@ def user():
 def api():
     return CreateAccountApi() 
 
-def test_create_account(api, user):
+def test_create_account(api_handler, user):
     user = NewUser(**{k: user[k] for k in NewUser.__annotations__}) #instancia el usuario desde el json
-    api.create_account(user)
-    DeleteUserAccountApi().delete_account(user)  # Clean up by deleting the account after creation
+    api_handler.create.create_account(user)
+    api_handler.delete.delete_account(user)
     
